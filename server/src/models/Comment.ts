@@ -9,7 +9,10 @@ export const Comment = sequelize.define('Comment', {
   },
   comment_text: DataTypes.STRING,
   file_path: DataTypes.STRING,
-  parent_id: DataTypes.INTEGER,
+  parent_id: {
+    type: DataTypes.INTEGER,
+    allowNull: true,
+  },
   user_id: DataTypes.INTEGER,
 }, {
   updatedAt: false,
