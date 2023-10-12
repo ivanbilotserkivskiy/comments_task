@@ -9,5 +9,9 @@
   "scripts": {
     "start": "ts-node src/index.ts",
     "dev": "nodemon src/index.ts"
+  },
+  "dependencies": {
+    "sequelize": "^6.33.0",
+    "sqlite3": "^5.1.6"
   }
 }
