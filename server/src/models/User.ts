@@ -1,8 +1,8 @@
-import { Sequelize, DataTypes } from 'sequelize';
+import { DataTypes } from 'sequelize';
 import { Comment } from './Comment';
+import { sequelize } from '../connection/connection';
 
-const sequelize = new Sequelize('sqlite::memory:');
-export const User = sequelize.define('User', {
+export const User = sequelize.define('user', {
   id: {
     type: DataTypes.INTEGER,
     primaryKey: true,
@@ -10,8 +10,9 @@ export const User = sequelize.define('User', {
   },
   username: DataTypes.STRING,
   password: DataTypes.STRING,
-  refresh_token: DataTypes.STRING,
+  recfresh_token: DataTypes.STRING,
 }, {
+  createdAt: false,
   updatedAt: false,
   tableName: 'user',
   modelName: 'User',
@@ -19,10 +20,10 @@ export const User = sequelize.define('User', {
 
 User.hasMany(Comment, {
   foreignKey: 'user_id',
-  as: 'user',
+  as: 'users', 
 });
 
-User.belongsTo(Comment, {
+Comment.belongsTo(User, {
   foreignKey: 'user_id',
-  as: 'user',
+  as: 'users',
 })

@@ -1,7 +1,7 @@
-import { Sequelize, DataTypes } from 'sequelize';
+import { DataTypes } from 'sequelize';
+import { sequelize } from '../connection/connection';
 
-const sequelize = new Sequelize('sqlite::memory:');
-export const Comment = sequelize.define('Comment', {
+export const Comment = sequelize.define('comment', {
   id: {
     type: DataTypes.INTEGER,
     primaryKey: true,
@@ -15,6 +15,7 @@ export const Comment = sequelize.define('Comment', {
   },
   user_id: DataTypes.INTEGER,
 }, {
+  createdAt: false,
   updatedAt: false,
   tableName: 'comment',
   modelName: 'Comment',
